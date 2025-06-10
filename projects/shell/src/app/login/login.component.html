@@ -1,0 +1,24 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" required />
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" formControlName="senha" required />
+    </div>
+    <div class="button-container">
+      <button>Entrar</button>
+    </div>
+    <div>
+      <p>Abra sua conta <a (click)="cadastro()" style="cursor: pointer; color: #007bff; text-decoration: underline;"><strong>Cadastre aqui!</strong></a>
+      </p>
+    </div>
+
+  </form>
+</div>
+
