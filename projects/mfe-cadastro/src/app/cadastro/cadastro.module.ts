@@ -4,7 +4,7 @@ import { CadastroComponent } from './cadastro.component';
 
 @NgModule({
   imports: [
-    CadastroComponent
+    CadastroComponent,
   ]
 })
 export class CadastroModule { }

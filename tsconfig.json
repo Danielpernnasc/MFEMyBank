@@ -4,9 +4,10 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "paths": {
-      "design-system": [
-        "dist/design-system"
-      ]
+      "shared-lib": [
+        "dist/shared-lib"
+      ],
+      "@shared-lib/*": ["libs/shared-lib/src/lib/*"]
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

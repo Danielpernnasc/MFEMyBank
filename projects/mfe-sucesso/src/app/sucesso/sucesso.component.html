@@ -1,1 +1,45 @@
-<p>sucesso works!</p>
+<div class="container my-5">
+  <div class="row">
+    <!-- Conta Interna -->
+    <div class="col-md-6">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+          Conta Interna
+        </div>
+        <div class="card-body">
+          <p><strong>Banco:</strong> </p>
+          <p><strong>Agência:</strong> </p>
+          <p><strong>Conta:</strong> </p>
+          <p><strong>Saldo:</strong> </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conta Externa -->
+    <div class="col-md-6">
+      <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text-white">
+          Conta Externa
+        </div>
+        <div class="card-body">
+          <p><strong>Banco:</strong> </p>
+          <p><strong>Agência:</strong> </p>
+          <p><strong>Conta:</strong> </p>
+          <p><strong>Saldo:</strong> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botões de ação -->
+  <div class="text-center">
+    <button class="btn btn-outline-primary me-3" >
+      <!-- (click)="copiarConta('interna')" -->
+      Copiar Conta Interna → Externa
+    </button>
+    <button class="btn btn-outline-success" >
+      <!-- (click)="copiarConta('externa')" -->
+      Copiar Conta Externa → Interna
+    </button>
+  </div>
+</div>
