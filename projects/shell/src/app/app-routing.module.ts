@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { authGuard } from './authentic/guard/auth.guard';
+import { authGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [

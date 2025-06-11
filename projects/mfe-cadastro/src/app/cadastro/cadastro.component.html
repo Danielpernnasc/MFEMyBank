@@ -26,20 +26,20 @@
             <!-- Senha -->
             <div class="form-floating mb-3">
               <input type="password" name="user_password" autocomplete="new-password" class="form-control" formControlName="password" placeholder="Senha">
-              <label for="senha">Senha</label>
+              <label for="password">Senha</label>
             </div>
 
             <!-- Confirmar Senha -->
             <div class="form-floating mb-3">
-              <input type="password" id="repetpassword" class="form-control" formControlName="repetpassword" placeholder="Confirmar Senha">
-              <label for="repetpassword">Confirmar Senha</label>
+              <input type="password" id="repeatpassowrd" class="form-control" formControlName="repeatpassword" placeholder="Confirmar Senha">
+              <label for="repeatpassowrd">Confirmar Senha</label>
             </div>
 
             <!-- Erro de senha -->
             <div *ngIf="formCadastro.errors?.['senhasDiferentes'] &&
                         formCadastro.get('password')?.value &&
-                        formCadastro.get('repetpassword')?.value &&
-                        formCadastro.get('repetpassword')?.touched"
+                        formCadastro.get('repeatpassword')?.value &&
+                        formCadastro.get('repeatpassword')?.touched"
                  class="alert alert-danger">
               As senhas não coincidem.
             </div>
