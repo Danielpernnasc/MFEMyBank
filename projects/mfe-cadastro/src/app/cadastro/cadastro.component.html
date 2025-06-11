@@ -1,1 +1,58 @@
-<p>cadastro works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow rounded">
+        <div class="card-body">
+          <h2 class="text-center mb-4">Cadastro</h2>
+          <form [formGroup]="formCadastro" (ngSubmit)="onSubmit()" autocomplete="off">
+            <!-- Nome -->
+            <div class="form-floating mb-3">
+              <input type="text" id="nome" class="form-control" formControlName="nome" placeholder="Nome completo">
+              <label for="nome">Nome completo</label>
+              <div *ngIf="formCadastro.get('nome')?.hasError('required') && (formCadastro.get('nome')?.touched || formCadastro.get('nome')?.dirty)" class="text-danger small mt-1">
+                Preencha o seu nome completo
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-floating mb-3">
+              <input type="email" name="user_email"  autocomplete="new-email" class="form-control" formControlName="email" placeholder="Email">
+              <label for="email">Email</label>
+              <div *ngIf="formCadastro.get('email')?.hasError('required') && (formCadastro.get('email')?.touched || formCadastro.get('email')?.dirty)" class="text-danger small mt-1">
+                Preencha o seu email
+              </div>
+            </div>
+
+            <!-- Senha -->
+            <div class="form-floating mb-3">
+              <input type="password" name="user_password" autocomplete="new-password" class="form-control" formControlName="password" placeholder="Senha">
+              <label for="senha">Senha</label>
+            </div>
+
+            <!-- Confirmar Senha -->
+            <div class="form-floating mb-3">
+              <input type="password" id="repetpassword" class="form-control" formControlName="repetpassword" placeholder="Confirmar Senha">
+              <label for="repetpassword">Confirmar Senha</label>
+            </div>
+
+            <!-- Erro de senha -->
+            <div *ngIf="formCadastro.errors?.['senhasDiferentes'] &&
+                        formCadastro.get('password')?.value &&
+                        formCadastro.get('repetpassword')?.value &&
+                        formCadastro.get('repetpassword')?.touched"
+                 class="alert alert-danger">
+              As senhas não coincidem.
+            </div>
+
+            <!-- Botão -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="formCadastro.invalid">
+                Cadastrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

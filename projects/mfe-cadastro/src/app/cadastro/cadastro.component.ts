@@ -3,12 +3,7 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { CadastroRoutingModule } from './cadastro-routing.module';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Cliente } from 'projects/shared-lib/src/lib/models/cliente.model';
-import { provideStore, Store, StoreModule } from '@ngrx/store';
-import { cadastrarCliente } from 'projects/shared-lib/src/lib/store/cliente/cliente.actions';
-import { selectCliente, selectClienteError, selectClienteLoading } from 'projects/shared-lib/src/lib/store/cliente/cliente.selector';
-import { userReducer } from 'projects/shared-lib/src/lib/store/user/user.reducer';
-import { provideEffects } from '@ngrx/effects';
-import { UserEffects } from 'projects/shared-lib/src/lib/store/user/user.effects';
+
 
 
 export const senhasIguaisValidator: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
@@ -25,7 +20,6 @@ export const senhasIguaisValidator: ValidatorFn = (group: AbstractControl): Vali
     CommonModule,
     CadastroRoutingModule,
     ReactiveFormsModule,
-    
   ],
   providers: [
 
@@ -40,7 +34,7 @@ export class CadastroComponent {
 
   constructor(
     private form: FormBuilder,
-    // private store: Store
+    private store: Store
   ){
 
 
@@ -57,7 +51,7 @@ export class CadastroComponent {
   onSubmit(): void {
     if (this.formCadastro.valid) {
       const novoCliente: Cliente = this.formCadastro.value;
-      // this.store.dispatch(cadastrarCliente({ cliente: novoCliente }));
+      this.store.dispatch(cadastrarCliente({ cliente: novoCliente }));
       console.log('Dados do cadastro:', this.formCadastro.value);
     } else {
       console.log('Formulário inválido');
