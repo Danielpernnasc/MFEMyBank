@@ -32,6 +32,7 @@ export class LoginComponent {
         next: (isAuthenticated: boolean) => {
           if (isAuthenticated) {
             // Navega para a rota protegida
+            localStorage.setItem('email', email);
             const rotaSucesso = this.router.navigate(['/sucesso']);
             console.log(rotaSucesso, 'Sucesso')
           } else {

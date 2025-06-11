@@ -65,6 +65,7 @@ export class CadastroComponent {
           this.authService.login(cliente.email, cliente.password).subscribe({
             next: (autenticado) => {
               if (autenticado) {
+                localStorage.setItem('email', cliente.email);
                 this.router.navigate(['/sucesso']);
               } else {
                 console.error('Falha ao autenticar após cadastro');
