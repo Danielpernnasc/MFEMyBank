@@ -6,7 +6,7 @@ O endereço para o download do Back End : https://github.com/Danielpernnasc/apiB
 
 Não tem mockado porque tem authenticate e geracao de token. Eu quis deixar o projeto bem proximo do profissional. Ta muito bom o projeto espera que goste. Arquitetura limpa, codigo limpo. Foi usado Bootstrap para layout 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11. 
 
 ## Development server
 
