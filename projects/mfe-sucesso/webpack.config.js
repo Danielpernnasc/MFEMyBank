@@ -26,30 +26,32 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+      library: { type: "module" },
 
-        // For remotes (please adjust)
-        name: "mfeSucesso",
-        filename: "remoteEntry.js",
-        exposes: {
-          './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts'
-        },
+      // For remotes (please adjust)
+      name: "mfeSucesso",
+      filename: "remoteEntry.js",
+      exposes: {
+        './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts'
+      },
 
-        // For hosts (please adjust)
-        remotes: {
-            "shell": "http://localhost:4200/remoteEntry.js",
-            "mfeCadastro": "http://localhost:4201/remoteEntry.js",
+      // For hosts (please adjust)
+      remotes: {
+        // "shell": "http://localhost:4200/remoteEntry.js",
+        // "mfeCadastro": "http://localhost:4201/remoteEntry.js",
+        "shell": "http://18.217.92.231/remoteEntry.js",
+        "mfeCadastro": "http://18.217.92.231/remoteEntry.js",
 
-        },
+      },
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
 
-          ...sharedMappings.getDescriptors()
-        })
+        ...sharedMappings.getDescriptors()
+      })
 
     }),
     sharedMappings.getPlugin()
