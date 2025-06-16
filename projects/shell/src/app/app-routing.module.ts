@@ -16,7 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        remoteEntry: 'http://http://18.217.92.231/remoteEntry.js',
         exposedModule: './CadastroModule'
       }).then(m => m.CadastroModule),
   },
@@ -26,7 +26,7 @@ const routes: Routes = [
     loadChildren: () =>
       loadRemoteModule({
         type: 'module',
-        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        remoteEntry: 'http://http://18.217.92.231/remoteEntry.js',
         exposedModule: './SucessoModule'
       }).then(m => m.SucessoModule),
   },
