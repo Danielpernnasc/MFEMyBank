@@ -32,7 +32,7 @@ module.exports = {
       name: "mfeSucesso",
       filename: "remoteEntry.js",
       exposes: {
-        './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts'
+        //'./SucessoModule': './src/app/sucesso/sucesso.module.ts'
       },
 
       // For hosts (please adjust)

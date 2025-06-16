@@ -32,7 +32,7 @@ module.exports = {
       name: "mfeCadastro",
       filename: "remoteEntry.js",
       exposes: {
-        './CadastroModule': './projects/mfe-cadastro/src/app/cadastro/cadastro.module.ts',
+        //'./CadastroModule': './src/app/cadastro/cadastro.module.ts',
       },
 
       // For hosts (please adjust)
