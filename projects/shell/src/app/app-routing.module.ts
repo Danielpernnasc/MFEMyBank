@@ -13,14 +13,23 @@ const routes: Routes = [
   },
   {
     path: 'cadastro',
-    component: CadastroComponent
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        exposedModule: './CadastroModule'
+      }).then(m => m.CadastroModule),
   },
   {
     path: 'sucesso',
-    component: SucessoComponent,
-    canActivate: [authGuard]
+    canActivate: [authGuard],
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4202/remoteEntry.js',
+        exposedModule: './SucessoModule'
+      }).then(m => m.SucessoModule),
   },
-
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
 ];

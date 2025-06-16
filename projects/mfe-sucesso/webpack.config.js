@@ -6,12 +6,13 @@ const share = mf.share;
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.json'),
-  [/* mapped paths to share */]);
+  [/* mapped paths to share */]
+);
 
 module.exports = {
   output: {
     uniqueName: "mfeSucesso",
-    publicPath: "auto"
+    publicPath: "http://18.217.92.231/mfe-sucesso/"
   },
   optimization: {
     runtimeChunk: false
@@ -28,20 +29,15 @@ module.exports = {
     new ModuleFederationPlugin({
       library: { type: "module" },
 
-      // For remotes (please adjust)
       name: "mfeSucesso",
       filename: "remoteEntry.js",
       exposes: {
-        //'./SucessoModule': './src/app/sucesso/sucesso.module.ts'
+        './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts' // ✅ CORRIGIDO
       },
 
-      // For hosts (please adjust)
       remotes: {
-        // "shell": "http://localhost:4200/remoteEntry.js",
-        // "mfeCadastro": "http://localhost:4201/remoteEntry.js",
         "shell": "http://18.217.92.231/remoteEntry.js",
         "mfeCadastro": "http://18.217.92.231/remoteEntry.js",
-
       },
 
       shared: share({
@@ -49,7 +45,6 @@ module.exports = {
         "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
         "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
         "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
         ...sharedMappings.getDescriptors()
       })
 
