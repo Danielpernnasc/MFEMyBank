@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cliente } from '../models/cliente.model';
+import { Config } from '../../urlconfig/url.config';
 
-const API_URL = 'http://localhost:8080/clientes';
+const API_URL = Config.urlApi;
 
 @Injectable({ providedIn: 'root' })
 export class ClienteService {
