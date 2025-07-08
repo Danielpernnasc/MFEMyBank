@@ -32,15 +32,13 @@ module.exports = {
       name: "mfeSucesso",
       filename: "remoteEntry.js",
       exposes: {
-        //'./SucessoModule': './src/app/sucesso/sucesso.module.ts'
+        // './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts'
       },
 
       // For hosts (please adjust)
       remotes: {
-        // "shell": "http://localhost:4200/remoteEntry.js",
-        // "mfeCadastro": "http://localhost:4201/remoteEntry.js",
-        "shell": "http://18.217.92.231/remoteEntry.js",
-        "mfeCadastro": "http://18.217.92.231/remoteEntry.js",
+        "shell": "http://localhost:4200/remoteEntry.js",
+        "mfeCadastro": "http://localhost:4201/remoteEntry.js",
 
       },
 

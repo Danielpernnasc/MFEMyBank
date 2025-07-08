@@ -37,10 +37,9 @@ module.exports = {
 
       // For hosts (please adjust)
       remotes: {
-        // "shell": "http://localhost:4200/remoteEntry.js",
-        // "mfeSucesso": "http://localhost:4202/remoteEntry.js",
-        "shell": "http://18.217.92.231/remoteEntry.js",
-        "mfeSucesso": "http://18.217.92.231/remoteEntry.js",
+        "shell": "http://localhost:4200/remoteEntry.js",
+        "mfeSucesso": "http://localhost:4202/remoteEntry.js",
+
 
       },
 
