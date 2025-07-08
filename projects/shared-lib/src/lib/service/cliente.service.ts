@@ -20,7 +20,7 @@ export class ClienteService {
 
   buscarPorEmail(email: string): Observable<Cliente> {
 
-    const token = localStorage.getItem('authToken'); // Provide an empty string as the password
+    const token = localStorage.getItem('authToken');
     const headers = {
       'Authorization': `Bearer ${token}`
     };
