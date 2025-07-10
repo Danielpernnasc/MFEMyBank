@@ -7,12 +7,13 @@ import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
 
-  declarations: [],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CadastroModule,
-    AppComponent,
   ],
   providers: [],
   bootstrap: []
