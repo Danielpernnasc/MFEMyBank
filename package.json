@@ -10,6 +10,11 @@
     "build:all": "ng build shared-lib --configuration=production && ng build shell --configuration=production && ng build mfe-cadastro --configuration=production && ng build mfe-sucesso --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:shell": "ng test shell --code-coverage",
+    "test:cadastro": "ng test mfe-cadastro --code-coverage",
+    "test:sucesso": "ng test mfe-sucesso --code-coverage",
+    "test:shared-lib": "ng test shared-lib --code-coverage",
+    "test:all": "npm-run-all --parallel test:shell test:cadastro test:sucesso test:shared-lib",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
@@ -39,6 +44,7 @@
     "@angular/compiler-cli": "^15.2.0",
     "@types/jasmine": "~4.3.0",
     "concurrently": "^9.1.2",
+    "jasmine": "^5.8.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
@@ -47,6 +53,7 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^15.2.2",
     "ngx-build-plus": "^15.0.0",
+    "npm-run-all": "^4.1.5",
     "typescript": "~4.9.4"
   }
 }

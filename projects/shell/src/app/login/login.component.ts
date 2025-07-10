@@ -15,7 +15,7 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService,
     private fb: FormBuilder
-  ){
+  ) {
 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -32,16 +32,15 @@ export class LoginComponent {
         next: (isAuthenticated: boolean) => {
           if (isAuthenticated) {
             // Navega para a rota protegida
-            localStorage.setItem('email', email);
-            const rotaSucesso = this.router.navigate(['/sucesso']);
-            console.log(rotaSucesso, 'Sucesso')
+            sessionStorage.setItem('email', email);
+            this.router.navigate(['/sucesso']);
           } else {
             console.error('Erro ao logar: autenticação falhou');
             // Aqui você pode mostrar mensagem pro usuário
           }
         },
         error: (error) => {
-          console.error('Erro ao logar:', error);
+          throw new Error('Erro ao logar: ' + error);
           // Aqui também pode mostrar feedback para o usuário
         }
       });

@@ -13,6 +13,7 @@ module.exports = {
   output: {
     uniqueName: "mfeCadastro",
     publicPath: "http://18.217.92.231/mfe-cadastro/"
+    //publicPath: "http://localhost:4201/mfe-cadastro/"
   },
   optimization: {
     runtimeChunk: false
@@ -33,13 +34,13 @@ module.exports = {
       filename: "remoteEntry.js",
 
       // ✅ Corrigido aqui
-      exposes: {
-        './CadastroModule': './projects/mfe-cadastro/src/app/cadastro/cadastro.module.ts'
-      },
+      exposes: {},
 
       remotes: {
         "shell": "http://18.217.92.231/remoteEntry.js",
+        //"shell": "http://localhost:4200/remoteEntry.js",
         "mfeSucesso": "http://18.217.92.231/remoteEntry.js",
+        //"mfeSucesso": "http://localhost:4202/remoteEntry.js",
       },
 
       shared: share({

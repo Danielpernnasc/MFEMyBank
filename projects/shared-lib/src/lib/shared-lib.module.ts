@@ -6,10 +6,10 @@ import { AuthInterceptor } from './authentic/service/auth.interceptor';
 
 
 @NgModule({
-  declarations: [
+  declarations: [],
+  imports: [
     SharedLibComponent
   ],
-  imports: [],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

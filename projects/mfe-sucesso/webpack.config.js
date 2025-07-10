@@ -13,6 +13,7 @@ module.exports = {
   output: {
     uniqueName: "mfeSucesso",
     publicPath: "http://18.217.92.231/mfe-sucesso/"
+    //publicPath: "http://localhost:4202/mfe-sucesso/"
   },
   optimization: {
     runtimeChunk: false
@@ -31,9 +32,7 @@ module.exports = {
 
       name: "mfeSucesso",
       filename: "remoteEntry.js",
-      exposes: {
-        './SucessoModule': './projects/mfe-sucesso/src/app/sucesso/sucesso.module.ts' // ✅ CORRIGIDO
-      },
+      exposes: {},
 
       remotes: {
         "shell": "http://18.217.92.231/remoteEntry.js",

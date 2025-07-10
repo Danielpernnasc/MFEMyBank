@@ -42,10 +42,10 @@ export class CadastroComponent {
     private clienteService: ClienteService,
     private authService: AuthService,
     private router: Router
-  ){
+  ) {
 
 
-  this.formCadastro = this.form.group({
+    this.formCadastro = this.form.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -56,16 +56,16 @@ export class CadastroComponent {
 
 
   onSubmit(): void {
+
     if (this.formCadastro.valid) {
       const novoCliente: Cliente = this.formCadastro.value;
-
       this.clienteService.salvar(novoCliente).subscribe({
         next: (cliente) => {
           console.log('Cliente cadastrado com sucesso:', cliente);
           this.authService.login(cliente.email, cliente.password).subscribe({
             next: (autenticado) => {
               if (autenticado) {
-                localStorage.setItem('email', cliente.email);
+                sessionStorage.setItem('email', cliente.email);
                 this.router.navigate(['/sucesso']);
               } else {
                 console.error('Falha ao autenticar após cadastro');
@@ -76,12 +76,11 @@ export class CadastroComponent {
           this.formCadastro.reset();
         },
         error: (error) => {
-          console.error('Erro ao cadastrar cliente:', error);
+          throw new Error(`Erro ao cadastrar cliente: ${error.message}`);
         }
       });
-      console.log('Dados do cadastro:', this.formCadastro.value);
     } else {
-      console.log('Formulário inválido');
+      throw new Error('Formulário inválido');
     }
   }
 

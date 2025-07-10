@@ -7,16 +7,14 @@ import { CadastroModule } from './cadastro/cadastro.module';
 
 @NgModule({
 
-  declarations: [
-    AppComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CadastroModule,
-
+    AppComponent,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }
