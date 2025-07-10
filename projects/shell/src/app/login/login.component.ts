@@ -10,7 +10,8 @@ import { AuthService } from 'projects/shared-lib/src/lib/authentic/service/auth.
 })
 export class LoginComponent {
   loginForm: FormGroup;
-
+  submitted = false;
+  mensagemErro = '';
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -24,24 +25,23 @@ export class LoginComponent {
 
   }
 
+
   onSubmit(): void {
+    this.submitted = true;
+    this.mensagemErro = '';
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-
       this.authService.login(email, password).subscribe({
         next: (isAuthenticated: boolean) => {
           if (isAuthenticated) {
-            // Navega para a rota protegida
             sessionStorage.setItem('email', email);
             this.router.navigate(['/sucesso']);
           } else {
-            console.error('Erro ao logar: autenticação falhou');
-            // Aqui você pode mostrar mensagem pro usuário
+            this.mensagemErro = 'Email ou senha incorretos.';
           }
         },
-        error: (error) => {
-          throw new Error('Erro ao logar: ' + error);
-          // Aqui também pode mostrar feedback para o usuário
+        error: () => {
+          this.mensagemErro = 'Erro ao conectar ao servidor.';
         }
       });
     }
