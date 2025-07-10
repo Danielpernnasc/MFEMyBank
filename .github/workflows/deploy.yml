@@ -1,4 +1,4 @@
-name: Build and Deploy to EC2
+name: Build and Deploy Frontend via S3
 
 on:
   push:
@@ -10,35 +10,52 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Etapa 1: Clonar o repositório
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Etapa 2: Instalar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+      # Etapa 3: Instalar dependências do projeto
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Angular apps
+      # Etapa 4: Compilar os MFEs e o shell
+      - name: Build Angular app
         run: npm run build:all
 
-      - name: Copy build files to EC2
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          source: "dist/**"
-          target: "/var/www/html/mybank"
-          strip_components: 1
+      # Etapa 5: Compactar o conteúdo da pasta dist
+      - name: Compress build output
+        run: tar -czf build.tar.gz -C dist .
 
-      - name: Restart Nginx on EC2
+      # Etapa 6: Configurar credenciais da AWS
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      # Etapa 7: Enviar build.tar.gz para o bucket S3
+      - name: Upload build.tar.gz to S3 bucket
+        run: aws s3 cp build.tar.gz s3://mybank-deploy/build.tar.gz
+
+      # Etapa 8: Conectar à EC2 e implantar o frontend
+      - name: SSH into EC2 and deploy from S3
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-                sudo systemctl restart nginx
+            sudo apt update && sudo apt install -y awscli
+            cd /tmp
+            aws s3 cp s3://mybank-deploy/build.tar.gz build.tar.gz
+            sudo mkdir -p /var/www/html/mybank
+            sudo rm -rf /var/www/html/mybank/*
+            sudo tar -xzf build.tar.gz -C /var/www/html/mybank
+            sudo systemctl restart nginx
