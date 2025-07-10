@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "build.tar.gz"
-          target: "/home/ec2-user/"
+          target: "/home/${{ secrets.EC2_USER }}/"
 
       - name: SSH into EC2 and Deploy
         uses: appleboy/ssh-action@v1.0.3
@@ -42,7 +42,8 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          port: 22
           script: |
             sudo rm -rf /var/www/html/*
-            sudo tar -xzf /home/ec2-user/build.tar.gz -C /var/www/html
+            sudo tar -xzf /home/${{ secrets.EC2_USER }}/build.tar.gz -C /var/www/html
             sudo systemctl restart nginx
