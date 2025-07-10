@@ -8,17 +8,16 @@ import { SharedLibModule } from 'projects/shared-lib/src/lib/shared-lib.module';
 
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SucessoModule,
-    SharedLibModule
+    SharedLibModule,
+    AppComponent
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

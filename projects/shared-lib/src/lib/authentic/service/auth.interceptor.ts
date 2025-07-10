@@ -4,7 +4,7 @@ import { HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http'
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const token = localStorage.getItem('authToken');
+    const token = sessionStorage.getItem('authToken');
 
     if (token) {
       const cloned = req.clone({
