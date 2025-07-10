@@ -36,13 +36,16 @@ jobs:
           source: "build.tar.gz"
           target: "/home/ec2-user/"
 
-      - name: SSH into EC2 and Deploy
+      - name: SSH into EC2 and deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            sudo rm -rf /var/www/html/*
-            sudo tar -xzf /home/ec2-user/build.tar.gz -C /var/www/html
+            mkdir -p /var/www/html/mybank
+            cd /tmp
+            aws s3 cp s3://mybank-deploy/build.tar.gz build.tar.gz
+            sudo rm -rf /var/www/html/mybank/*
+            sudo tar -xzf build.tar.gz -C /var/www/html/mybank
             sudo systemctl restart nginx
