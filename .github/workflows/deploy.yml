@@ -36,6 +36,9 @@ jobs:
           source: "build.tar.gz"
           target: "/home/${{ secrets.EC2_USER }}/"
 
+      - name: Docker Login
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+
       - name: SSH into EC2 and Deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -44,6 +47,8 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: 22
           script: |
-            sudo rm -rf /var/www/html/*
-            sudo tar -xzf /home/${{ secrets.EC2_USER }}/build.tar.gz -C /var/www/html
-            sudo systemctl restart nginx
+            cd ~/MFEMyBank
+            docker build -t meu-frontend:latest .
+            docker stop meu-frontend || true
+            docker rm meu-frontend || true
+            docker run -d --name meu-frontend -p 80:80 meu-frontend:latest
