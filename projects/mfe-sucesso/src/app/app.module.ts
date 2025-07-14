@@ -16,9 +16,8 @@ import { SharedLibModule } from 'projects/shared-lib/src/lib/shared-lib.module';
     AppRoutingModule,
     SucessoModule,
     SharedLibModule
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

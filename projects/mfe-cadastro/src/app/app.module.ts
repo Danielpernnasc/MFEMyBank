@@ -8,15 +8,14 @@ import { CadastroModule } from './cadastro/cadastro.module';
 @NgModule({
 
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CadastroModule,
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { loadRemoteModule } from '@angular-architects/module-federation';
+import { RouterModule, Routes } from '@angular/router';;
 import { authGuard } from './guard/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from 'projects/mfe-cadastro/src/app/cadastro/cadastro.component';

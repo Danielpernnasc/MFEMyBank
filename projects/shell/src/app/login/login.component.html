@@ -4,21 +4,39 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" autocomplete="off">
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email"   formControlName="email" name="user_email" autocomplete="new-email"   required />
+      <input type="email" formControlName="email"
+        [ngClass]="{'is-invalid': submitted && loginForm.controls['email'].invalid}" name="user_email"
+        autocomplete="new-email" required />
+      <div
+        *ngIf="submitted && loginForm.get('email')?.hasError('required') && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)"
+        class="text-danger small mt-1">
+        Preencha o e-mail
+      </div>
     </div>
 
     <div class="form-group">
       <label for="senha">Senha:</label>
-      <input type="password" formControlName="password" name="user_password" autocomplete="new-password"  required />
+      <input type="password" formControlName="password"
+        [ngClass]="{'is-invalid': submitted && loginForm.controls['password'].invalid}" name="user_email"
+        name="user_password" autocomplete="new-password" required />
+      <div
+        *ngIf="submitted && loginForm.get('password')?.hasError('required') && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)"
+        class="text-danger small mt-1">
+        Preencha a senha
+      </div>
+    </div>
+    <div *ngIf="mensagemErro" class="text-danger mt-2">
+      {{ mensagemErro }}
     </div>
     <div class="button-container mt-3">
-      <button class="btn btn-primary px-5 py-2">Entrar</button>
+
+      <button type="submit" class="btn btn-primary px-5 py-2">Entrar</button>
     </div>
     <div style="margin: 50px 0;">
-      <p>Abra sua conta <a (click)="cadastro()" style="cursor: pointer; color: #007bff; text-decoration: underline;"><strong>Cadastre aqui!</strong></a>
+      <p>Abra sua conta <a (click)="cadastro()"
+          style="cursor: pointer; color: #007bff; text-decoration: underline;"><strong>Cadastre aqui!</strong></a>
       </p>
     </div>
 
   </form>
 </div>
-

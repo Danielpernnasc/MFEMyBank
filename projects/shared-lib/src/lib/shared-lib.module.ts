@@ -9,7 +9,8 @@ import { AuthInterceptor } from './authentic/service/auth.interceptor';
   declarations: [
     SharedLibComponent
   ],
-  imports: [],
+  imports: [
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
