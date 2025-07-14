@@ -15,6 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - RxJS
 - Bootstrap
 - TypeScript
+- teste Unitarios Karma Jasmine
 
 ## 📦 Como rodar o projeto
 
@@ -28,6 +29,7 @@ o shell MFE Cadastro e Mfe Sucesso rodaram simultaneamente.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
 
 ## Code scaffolding
 
