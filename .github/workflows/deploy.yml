@@ -34,7 +34,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          source: "meu-frontend:latest"
+          source: "meu-frontend.tar"
           target: "/home/${{ secrets.EC2_USER }}/"
 
       # Docker login só é necessário se você usar imagens privadas do Docker Hub
