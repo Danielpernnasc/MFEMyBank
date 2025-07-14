@@ -16,6 +16,6 @@ import { CadastroModule } from './cadastro/cadastro.module';
     CadastroModule,
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
