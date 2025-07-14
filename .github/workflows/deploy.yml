@@ -23,17 +23,17 @@ jobs:
       - name: Build Angular project
         run: npm run build:all
 
-      - name: List files for debug
-        run: ls -l
-
-      - name: Fix permissions
-        run: sudo chmod 666 meu-frontend.tar
-
       - name: Build Docker image
         run: docker build -t meu-frontend:latest .
 
       - name: Save Docker image as tar
         run: sudo docker save meu-frontend:latest -o meu-frontend.tar
+
+      - name: Fix permissions
+        run: sudo chmod 666 meu-frontend.tar
+
+      - name: List files for debug
+        run: ls -l
 
       - name: Copy Docker image to EC2
         uses: appleboy/scp-action@v0.1.7
