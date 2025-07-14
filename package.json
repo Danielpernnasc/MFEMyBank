@@ -1,10 +1,6 @@
 {
   "name": "mfe-workspace",
-<<<<<<< HEAD
-  "version": "1.1.2",
-=======
   "version": "1.1.9",
->>>>>>> c532040cf210e66eb7f45886a602956e40e1743d
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"npm run shell\" \"npm run cadastro\" \"npm run sucesso\"",
