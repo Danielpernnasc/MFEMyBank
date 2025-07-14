@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "meu-frontend.tar"
-          target: "/home/${{ secrets.EC2_USER }}/"
+          target: "/home/${{ secrets.EC2_USER }}/MFEMyBank/"
 
       - name: SSH into EC2 and restart container
         uses: appleboy/ssh-action@v1.0.3
