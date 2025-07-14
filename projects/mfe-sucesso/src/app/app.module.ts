@@ -18,6 +18,6 @@ import { SharedLibModule } from 'projects/shared-lib/src/lib/shared-lib.module';
     SharedLibModule
   ],
   providers: [],
-  bootstrap: []
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
