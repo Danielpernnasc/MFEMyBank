@@ -51,7 +51,17 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            sudo systemctl stop nginx
             docker stop meu-frontend || true
             docker rm meu-frontend || true
+            sudo rm -rf /usr/share/nginx/html/*
+            sudo mkdir -p /usr/share/nginx/html/mfe-cadastro
+            sudo mkdir -p /usr/share/nginx/html/mfe-sucesso
+            sudo mkdir -p /usr/share/nginx/html/shared-lib
+            sudo cp -r ~/MFEMyBank/dist/shell/* /usr/share/nginx/html/
+            sudo cp -r ~/MFEMyBank/dist/mfe-cadastro/* /usr/share/nginx/html/mfe-cadastro/
+            sudo cp -r ~/MFEMyBank/dist/mfe-sucesso/* /usr/share/nginx/html/mfe-sucesso/
+            sudo cp -r ~/MFEMyBank/dist/shared-lib/* /usr/share/nginx/html/shared-lib/
+            sudo systemctl restart nginx
             docker load -i /home/${{ secrets.EC2_USER }}/meu-frontend.tar
             docker run -d --name meu-frontend -p 80:80 meu-frontend:latest
