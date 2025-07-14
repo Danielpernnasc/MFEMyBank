@@ -54,4 +54,4 @@ jobs:
             docker stop meu-frontend || true
             docker rm meu-frontend || true
             docker load -i /home/${{ secrets.EC2_USER }}/meu-frontend.tar
-            docker run -d --name meu-frontend -p 8080:80 meu-frontend:latest
+            docker run -d --name meu-frontend -p 8081:80 meu-frontend:latest
