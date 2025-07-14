@@ -1,4 +1,4 @@
-name: Build and Deploy Frontend to EC2 with Docker
+name: Build and Deploy Frontend
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -17,7 +16,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
-
 
       - name: Install dependencies
         run: npm ci
@@ -28,7 +26,10 @@ jobs:
       - name: Build Docker image
         run: docker build -t meu-frontend:latest .
 
-      - name: Copy project files to EC2
+      - name: Save Docker image as tar
+        run: docker save meu-frontend:latest -o meu-frontend.tar
+
+      - name: Copy Docker image to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -37,10 +38,6 @@ jobs:
           source: "meu-frontend.tar"
           target: "/home/${{ secrets.EC2_USER }}/"
 
-      # Docker login só é necessário se você usar imagens privadas do Docker Hub
-      # - name: Docker Login
-      #   run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
-
       - name: SSH into EC2 and restart container
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -48,8 +45,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            cd ~/MFEMyBank
-            docker build -t meu-frontend:latest .
             docker stop meu-frontend || true
             docker rm meu-frontend || true
-            docker run -d --name meu-frontend -p 80:80 meu-frontend:latest
+            docker load -i /home/${{ secrets.EC2_USER }}/meu-frontend.tar
+            docker run -d --name meu-frontend -p 8080:80 meu-frontend:latest
