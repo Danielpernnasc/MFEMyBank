@@ -38,9 +38,9 @@ module.exports = {
 
       remotes: {
         "shell": "http://3.19.123.139/remoteEntry.js",
-        //"shell": "http://localhost:4200/remoteEntry.js",
+        "shell": "http://localhost:4200/remoteEntry.js",
         "mfeSucesso": "http://3.19.123.139/remoteEntry.js",
-        //"mfeSucesso": "http://localhost:4202/remoteEntry.js",
+        "mfeSucesso": "http://localhost:4202/remoteEntry.js",
       },
 
       shared: share({
