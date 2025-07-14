@@ -276,7 +276,7 @@
           "defaultConfiguration": "development",
           "options": {
             "port": 4202,
-            "publicHost": "http://18.217.92.231",
+            "publicHost": "http://3.19.123.139",
             "extraWebpackConfig": "projects/mfe-sucesso/webpack.config.js"
           }
         },

@@ -12,7 +12,7 @@ sharedMappings.register(
 module.exports = {
   output: {
     uniqueName: "mfeCadastro",
-    publicPath: "http://18.217.92.231/mfe-cadastro/"
+    publicPath: "http://3.19.123.139/mfe-cadastro/"
     //publicPath: "http://localhost:4201/mfe-cadastro/"
   },
   optimization: {
@@ -37,9 +37,9 @@ module.exports = {
       exposes: {},
 
       remotes: {
-        "shell": "http://18.217.92.231/remoteEntry.js",
+        "shell": "http://3.19.123.139/remoteEntry.js",
         //"shell": "http://localhost:4200/remoteEntry.js",
-        "mfeSucesso": "http://18.217.92.231/remoteEntry.js",
+        "mfeSucesso": "http://3.19.123.139/remoteEntry.js",
         //"mfeSucesso": "http://localhost:4202/remoteEntry.js",
       },
 
