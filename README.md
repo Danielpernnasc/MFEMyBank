@@ -2,7 +2,7 @@
 
 Aqui você vao conhecer e brincar com open finance. Pode transferir dinheiro de uma conta para outra. Foi feito o projeto utilizando Module Federation  Shell e dois MFE um para Cadastro e outra Sucesso onde os dados do usuario aparece.  Vamos ter tres diretorios em um cada diretorio com seu componente a um quarto diretorio mais usado para servico. Esse projeto consome api que vai precisar rodar localmente. Não foi possivel subir para Nuvem. 
 
-O endereço para o download do Back End : https://github.com/Danielpernnasc/apiBancoDigital em JAVA 17 para rodar ele e poder consumir. 
+O endereço para o download do Back End : https://github.com/Danielpernnasc/apiBancoDigital em JAVA 17 para rodar ele e para consumir a API. 
 
 Não tem mockado porque tem authenticate e geracao de token. Eu quis deixar o projeto bem proximo do profissional. Ta muito bom o projeto espera que goste. Arquitetura limpa, codigo limpo. Foi usado Bootstrap para layout 
 
